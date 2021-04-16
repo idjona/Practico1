@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.idjona.practico1.Model.BaseDatos;
 import com.idjona.practico1.Model.Fruta;
 
 public class DetallesActivity extends AppCompatActivity {
@@ -19,9 +21,16 @@ public class DetallesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalles);
 
+        txtNombreFruta = findViewById(R.id.txtNombreFruta);
+        txtPrecioFruta = findViewById(R.id.txtPrecioFruta);
+        txtStockFruta = findViewById(R.id.txtStockFruta);
+        btnVolver = findViewById(R.id.btnVolver);
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         Fruta fruta = (Fruta) bundle.get("fruta");
+
+        Toast.makeText(DetallesActivity.this, fruta.toString(), Toast.LENGTH_LONG).show();
 
         txtNombreFruta.setText(fruta.getNombre());
         txtPrecioFruta.setText("$" +fruta.getPrecio());
